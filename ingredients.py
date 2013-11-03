@@ -6,7 +6,7 @@ import json
 
 from rethinkdb.errors import RqlRuntimeError, RqlDriverError
 
-RDB_HOST =  os.environ.get('RDB_HOST') or 'localhost'
+RDB_HOST = os.environ.get('RDB_HOST') or 'localhost'
 RDB_PORT = os.environ.get('RDB_PORT') or 28015
 
 prompt = '> '
@@ -18,14 +18,14 @@ connection = None
 def work_out_args(argv):
     parser=argparse.ArgumentParser("")
     parser.add_argument("-l", "--load_data", help="load data in table")
+    parser.add_argument("-f", "--force", action="store_true", help="use the Force, Luke")
     args = parser.parse_args()
     if args.load_data!=None:
-        connect()
         if connection==None:
             exit()
         else:
             print "connected successfully"
-            load_data(args.load_data)
+            load_data(args.load_data, args.force)
 
 def print_no_db():
     print "!!! You haven't got necessary table! Run"
@@ -43,9 +43,9 @@ def connect():
 def close_all():
     global connection
     connection.close()
+    print "Close connection"
 
 def connect_and_prepare(db, table_name):
-    connect()
     if connection==None:
         print_no_db()
         return None
@@ -54,7 +54,7 @@ def connect_and_prepare(db, table_name):
         close_all()
         return None
 
-def load_data(path2data):
+def load_data(path2data, force_load):
     print "Try to load data from ", path2data
     l=r.db_list().run(connection)
     if not db_name in l:
@@ -84,6 +84,10 @@ def load_data(path2data):
             close_all()
     else:
         print "table '", t_name, "' already exists"
+        if not force_load:
+            if r.db(db_name).table(t_name).count().run(connection) > 0:
+                print "There is something in your table"
+                return
 
     json_data = open(path2data)
     data=json.load(json_data)
@@ -110,10 +114,8 @@ def print_all_ingredients():
     print "All ingredients"
 
 def main(argv=None):
+    connect()
     work_out_args(argv)
-
-    if connect_and_prepare(db_name, t_name)==None:
-        exit();
 
     while True:
         string = raw_input(prompt)
