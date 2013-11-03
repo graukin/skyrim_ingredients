@@ -28,7 +28,7 @@ def work_out_args(argv):
             load_data(args.load_data, args.force)
 
 def print_no_db():
-    print "!!! You haven't got necessary table! Run"
+    print "!!! You haven't got necessary table (or some other problems occur)! Run"
     print ">$ ingredients.py --load_data <path_to_json>"
     print "to load data in your DB"
 
@@ -45,14 +45,20 @@ def close_all():
     connection.close()
     print "Close connection"
 
-def connect_and_prepare(db, table_name):
+def check():
     if connection==None:
         print_no_db()
-        return None
-    elif r.db(db).table(table_name).count().run(connection) < 1:
+        return False
+    elif not db_name in r.db_list().run(connection):
         print_no_db()
-        close_all()
-        return None
+        return False
+    elif not t_name in r.db(db_name).table_list().run(connection):
+        print_no_db()
+        return False
+    elif r.db(db_name).table(t_name).count().run(connection) < 1:
+        print_no_db()
+        return False
+    return True
 
 def load_data(path2data, force_load):
     print "Try to load data from ", path2data
@@ -111,12 +117,17 @@ def print_help():
     print "  'quit' or 'exit' for exit"
 
 def print_all_ingredients():
-    print "All ingredients"
+    print "All ingredients:"
+    l=r.db(db_name).table(t_name).pluck("name").order_by(r.asc("name")).run(connection)
+    for item in l:
+        print " ",item["name"]
 
 def main(argv=None):
     connect()
     work_out_args(argv)
-
+    if not check():
+        close_all()
+        return
     while True:
         string = raw_input(prompt)
         # for exit print "exit" or "quit"
