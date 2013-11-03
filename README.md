@@ -1,4 +1,3 @@
-skyrim_ingredients
-==================
+Big gun for little flyes
 
-Ingredients
+Just playing a bit with Python and RethinkDB
