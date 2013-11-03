@@ -2,6 +2,7 @@ import rethinkdb as r
 import sys
 import os
 import argparse
+import json
 
 from rethinkdb.errors import RqlRuntimeError, RqlDriverError
 
@@ -59,12 +60,44 @@ def load_data(path2data):
     if not db_name in l:
        try:
            a=r.db_create(db_name).run(connection)
-           print a
+           if a['created']!=1:
+              print "WTF?!"
+              close_all()
+              exit()
+           print "database '", db_name, "' is created"
        except RqlRuntimeError as e:
            print e
            close_all()
     else:
        print "database '", db_name, "' already exists"
+    l=r.db(db_name).table_list().run(connection)
+    if not t_name in l:
+        try:
+            a=r.db(db_name).table_create(t_name).run(connection)
+            if a['created']!=1:
+               print "WTF?!"
+               close_all()
+               exit()
+            print "table '", t_name, "' is created"
+        except RqlRuntimeException as e:
+            print e
+            close_all()
+    else:
+        print "table '", t_name, "' already exists"
+
+    json_data = open(path2data)
+    data=json.load(json_data)
+    json_data.close()
+    cnt=0
+    for item in data:
+        print "Load data about ",item["name"]
+        a=r.db(db_name).table(t_name).insert(item).run(connection)
+        if a['errors']!=0:
+            print "Oops! Something goes wrong"
+            print a['first_error']
+            close_all()
+        cnt=cnt+a['inserted']
+    print cnt, "new items are loaded"
 
 def print_help():
     print "Commands:"
