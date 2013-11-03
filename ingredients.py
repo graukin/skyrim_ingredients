@@ -122,6 +122,12 @@ def print_all_ingredients():
     for item in l:
         print " ",item["name"]
 
+def print_all_effects():
+    print "All effects:"
+    l=r.db(db_name).table(t_name).concat_map(lambda ingr: ingr['effects']).distinct().run(connection)
+    for item in l:
+        print " ",item
+
 def main(argv=None):
     connect()
     work_out_args(argv)
@@ -132,12 +138,14 @@ def main(argv=None):
         string = raw_input(prompt)
         # for exit print "exit" or "quit"
         if string=="exit" or string=="quit":
-            close_all();
+            close_all()
             break
         if string=="help" or string=="h":
-            print_help();
+            print_help()
         elif string=="all ingredients" or string=="ingredients":
-            print_all_ingredients();
+            print_all_ingredients()
+        elif string=="all effects" or string=="effects":
+            print_all_effects()
 
 if __name__ == "__main__":
     sys.exit(main())
