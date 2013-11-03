@@ -1,0 +1,1350 @@
+[
+  {
+    "name" : "Abecean Longfin",
+    "weight" : "0.5",
+    "value" : "15",
+    "effects" : [
+      "Weakness to Frost",
+      "Fortify Sneak",
+      "Weakness to Poison",
+      "Fortify Restoration"
+    ],
+    "tip" : "Flowing water, lakes, barrel of fish"
+  },
+  {
+    "name" : "Ancestor Moth Wing",
+    "dlc" : "DG",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify Conjuration",
+      "Damage Magicka Regen",
+      "Fortify Enchanting"
+    ],
+    "tip" : "Ancestor Glade"
+  },
+  {
+    "name" : "Ash Creep Cluster",
+    "dlc" : "DB",
+    "weight" : "0.3",
+    "value" : "20",
+    "effects" : [
+      "Damage Stamina",
+      "Invisibility",
+      "Resist Fire",
+      "Fortify Destruction"
+    ],
+    "tip" : "Ash covered areas of Solstheim"
+  },
+  {
+    "name" : "Ash Hopper Jelly",
+    "weight" : "0.3",
+    "value" : "20",
+    "effects" : [
+      "Restore Health",
+      "Fortify Light Armor",
+      "Resist Shock",
+      "Weakness to Frost"
+    ],
+    "tip" : "Ash Hopper Corpses"
+  },
+  {
+    "name" : "Ashen Grass Pod",
+    "dlc" : "DB",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Fire",
+      "Weakness to Shock",
+      "Fortify Lockpicking",
+      "Fortify Sneak"
+    ],
+    "tip" : "Ash covered areas of Solstheim"
+  },
+  {
+    "name" : "Bear Claws",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Health",
+      "Fortify One-Handed",
+      "Damage Magicka Regen"
+    ],
+    "tip" : "Bears"
+  },
+  {
+    "name" : "Bee",
+    "weight" : "0.1",
+    "value" : "3",
+    "effects" : [
+      "Restore Stamina",
+      "Ravage Stamina",
+      "Regenerate Stamina",
+      "Weakness to Shock"
+    ],
+    "tip" : "Beehive"
+  },
+  {
+    "name" : "Beehive Husk",
+    "weight" : "1",
+    "value" : "5",
+    "effects" : [
+      "Resist Poison",
+      "Fortify Light Armor",
+      "Fortify Sneak",
+      "Fortify Destruction"
+    ],
+    "tip" : "Beehive"
+  },
+  {
+    "name" : "Berit's Ashes",
+    "weight" : "0.5",
+    "value" : "5",
+    "effects" : [
+      "Damage Stamina",
+      "Resist Fire",
+      "Fortify Conjuration",
+      "Ravage Stamina"
+    ],
+    "tip" : "Quest item given by Thadgeir"
+  },
+  {
+    "name" : "Bleeding Crown",
+    "weight" : "0.3",
+    "value" : "10",
+    "effects" : [
+      "Weakness to Fire",
+      "Fortify Block",
+      "Weakness to Poison",
+      "Resist Magic"
+    ],
+    "tip" : "Mushroom clusters"
+  },
+  {
+    "name" : "Blisterwort",
+    "weight" : "0.2",
+    "value" : "12",
+    "effects" : [
+      "Damage Stamina",
+      "Frenzy",
+      "Restore Health",
+      "Fortify Smithing"
+    ],
+    "tip" : "Caves and dark areas"
+  },
+  {
+    "name" : "Blue Butterfly Wing",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify Conjuration",
+      "Damage Magicka Regen",
+      "Fortify Enchanting"
+    ],
+    "tip" : "Blue Butterfly"
+  },
+  {
+    "name" : "Blue Dartwing",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Shock",
+      "Fortify Pickpocket",
+      "Restore Health",
+      "Fear"
+    ],
+    "tip" : "Hovering above water"
+  },
+  {
+    "name" : "Blue Mountain Flower",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Health",
+      "Fortify Conjuration",
+      "Fortify Health",
+      "Damage Magicka Regen"
+    ],
+    "tip" : "Mountain flower clumps"
+  },
+  {
+    "name" : "Boar Tusk",
+    "dlc" : "DB",
+    "weight" : "0.5",
+    "value" : "20",
+    "effects" : [
+      "Fortify Stamina",
+      "Fortify Health",
+      "Fortify Block",
+      "Frenzy"
+    ],
+    "tip" : "Tusked Bristlebacks"
+  },
+  {
+    "name" : "Bone Meal",
+    "weight" : "0.5",
+    "value" : "5",
+    "effects" : [
+      "Damage Stamina",
+      "Resist Fire",
+      "Fortify Conjuration",
+      "Ravage Stamina"
+    ],
+    "tip" : "Draugr and skeletons"
+  },
+  {
+    "name" : "Briar Heart",
+    "weight" : "0.5",
+    "value" : "20",
+    "effects" : [
+      "Restore Magicka",
+      "Fortify Block",
+      "Paralysis",
+      "Fortify Magicka"
+    ],
+    "tip" : "Forsworn Leaders"
+  },
+  {
+    "name" : "Burnt Spriggan Wood",
+    "dlc" : "DB",
+    "weight" : "0.5",
+    "value" : "20",
+    "effects" : [
+      "Weakness to Fire",
+      "Fortify Alteration",
+      "Damage Magicka Regen",
+      "Slow"
+    ],
+    "tip" : "Burnt Spriggans"
+  },
+  {
+    "name" : "Butterfly Wing",
+    "weight" : "0.1",
+    "value" : "3",
+    "effects" : [
+      "Restore Health",
+      "Fortify Barter",
+      "Lingering Damage Stamina",
+      "Damage Magicka"
+    ],
+    "tip" : "Monarch Butterfly"
+  },
+  {
+    "name" : "Canis Root",
+    "weight" : "0.1",
+    "value" : "5",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify One-Handed",
+      "Fortify Marksman",
+      "Paralysis"
+    ],
+    "tip" : "Near rocky areas"
+  },
+  {
+    "name" : "Charred Skeever Hide",
+    "weight" : "0.5",
+    "value" : "1",
+    "effects" : [
+      "Restore Stamina",
+      "Cure Disease",
+      "Resist Poison",
+      "Restore Health"
+    ],
+    "tip" : "Found at campfires"
+  },
+  {
+    "name" : "Chaurus Eggs",
+    "weight" : "0.2",
+    "value" : "10",
+    "effects" : [
+      "Weakness to Poison",
+      "Fortify Stamina",
+      "Damage Magicka",
+      "Invisibility"
+    ],
+    "tip" : "Falmer caves"
+  },
+  {
+    "name" : "Chaurus Hunter Antennae",
+    "dlc" : "DG",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify Conjuration",
+      "Damage Magicka Regen",
+      "Fortify Enchanting"
+    ],
+    "tip" : "Chaurus Hunter, Chaurus Hunter Fledgling"
+  },
+  {
+    "name" : "Chicken's Egg",
+    "weight" : "0.5",
+    "value" : "2",
+    "effects" : [
+      "Resist Magic",
+      "Damage Magicka Regen",
+      "Waterbreathing",
+      "Lingering Damage Stamina"
+    ],
+    "tip" : "Chicken's Nest"
+  },
+  {
+    "name" : "Creep Cluster",
+    "weight" : "0.2",
+    "value" : "1",
+    "effects" : [
+      "Restore Magicka",
+      "Damage Stamina Regen",
+      "Fortify Carry Weight",
+      "Weakness to Magic"
+    ],
+    "tip" : "Hydro-thermal areas"
+  },
+  {
+    "name" : "Crimson Nirnroot",
+    "weight" : "0.2",
+    "value" : "10",
+    "effects" : [
+      "Damage Health",
+      "Damage Stamina",
+      "Invisibility",
+      "Resist Magic"
+    ],
+    "tip" : "Blackreach"
+  },
+  {
+    "name" : "Cyrodilic Spadetail",
+    "weight" : "0.3",
+    "value" : "15",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify Restoration",
+      "Fear",
+      "Ravage Health"
+    ],
+    "tip" : "Flowing water, lakes, barrel of fish"
+  },
+  {
+    "name" : "Daedra Heart",
+    "weight" : "0.5",
+    "value" : "250",
+    "effects" : [
+      "Restore Health",
+      "Damage Stamina Regen",
+      "Damage Magicka",
+      "Fear"
+    ],
+    "tip" : "Daedra"
+  },
+  {
+    "name" : "Deathbell",
+    "weight" : "0.1",
+    "value" : "4",
+    "effects" : [
+      "Damage Health",
+      "Ravage Stamina",
+      "Slow",
+      "Weakness to Poison"
+    ],
+    "tip" : "Wild, on planters"
+  },
+  {
+    "name" : "Dragon's Tongue",
+    "weight" : "0.1",
+    "value" : "5",
+    "effects" : [
+      "Resist Fire",
+      "Fortify Barter",
+      "Fortify Illusion",
+      "Fortify Two-handed"
+    ],
+    "tip" : "Hydro-thermal areas"
+  },
+  {
+    "name" : "Dwarven Oil",
+    "weight" : "0.3",
+    "value" : "15",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Illusion",
+      "Regenerate Magicka",
+      "Restore Magicka"
+    ],
+    "tip" : "Dwemer Ruins"
+  },
+  {
+    "name" : "Ectoplasm",
+    "weight" : "0.1",
+    "value" : "25",
+    "effects" : [
+      "Restore Magicka",
+      "Fortify Destruction",
+      "Fortify Magicka",
+      "Damage Health"
+    ],
+    "tip" : "Ghostlike creatures"
+  },
+  {
+    "name" : "Elves Ear",
+    "weight" : "0.1",
+    "value" : "10",
+    "effects" : [
+      "Restore Magicka",
+      "Fortify Marksman",
+      "Weakness to Frost",
+      "Resist Fire"
+    ],
+    "tip" : "Plant, hanging herbs"
+  },
+  {
+    "name" : "Emperor Parasol Moss",
+    "dlc" : "DB",
+    "weight" : "0.3",
+    "value" : "1",
+    "effects" : [
+      "Damage Health",
+      "Fortify Magicka",
+      "Regenerate Health",
+      "Fortify Two-handed"
+    ],
+    "tip" : "Emperor Parasol, Tel Mithryn"
+  },
+  {
+    "name" : "Eye of Sabre Cat",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Ravage Health",
+      "Damage Magicka",
+      "Restore Health"
+    ],
+    "tip" : "Sabre Cat,Snowy Sabre Cat"
+  },
+  {
+    "name" : "Falmer Ear",
+    "weight" : "0.2",
+    "value" : "10",
+    "effects" : [
+      "Damage Health",
+      "Frenzy",
+      "Resist Poison",
+      "Fortify Lockpicking"
+    ],
+    "tip" : "Falmer"
+  },
+  {
+    "name" : "Felsaad Tern Feathers",
+    "dlc" : "DB",
+    "weight" : "0.1",
+    "value" : "15",
+    "effects" : [
+      "Restore Health",
+      "Fortify Light Armor",
+      "Cure Disease",
+      "Resist Magic"
+    ],
+    "tip" : "Felsaad Tern"
+  },
+  {
+    "name" : "Fire Salts",
+    "weight" : "0.3",
+    "value" : "50",
+    "effects" : [
+      "Weakness to Frost",
+      "Resist Fire",
+      "Restore Magicka",
+      "Regenerate Magicka"
+    ],
+    "tip" : "Flame Atronach"
+  },
+  {
+    "name" : "Fly Amanita",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Resist Fire",
+      "Fortify Two-handed",
+      "Frenzy",
+      "Regenerate Stamina"
+    ],
+    "tip" : "Mushroom clusters in and around caves"
+  },
+  {
+    "name" : "Frost Mirriam",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Frost",
+      "Fortify Sneak",
+      "Ravage Magicka",
+      "Damage Stamina Regen"
+    ],
+    "tip" : "Homes, businesses, giant camps"
+  },
+  {
+    "name" : "Frost Salts",
+    "weight" : "0.3",
+    "value" : "100",
+    "effects" : [
+      "Weakness to Fire",
+      "Resist Frost",
+      "Restore Magicka",
+      "Fortify Conjuration"
+    ],
+    "tip" : "Frost Atronach"
+  },
+  {
+    "name" : "Garlic",
+    "weight" : "0.3",
+    "value" : "1",
+    "effects" : [
+      "Resist Poison",
+      "Fortify Stamina",
+      "Regenerate Magicka",
+      "Regenerate Health"
+    ],
+    "tip" : "Homes, businesses, cooking areas"
+  },
+  {
+    "name" : "Giant Lichen",
+    "weight" : "0.3",
+    "value" : "5",
+    "effects" : [
+      "Weakness to Shock",
+      "Ravage Health",
+      "Weakness to Poison",
+      "Restore Magicka"
+    ],
+    "tip" : "Swamps"
+  },
+  {
+    "name" : "Giant's Toe",
+    "weight" : "1",
+    "value" : "20",
+    "effects" : [
+      "Damage Stamina",
+      "Fortify Health",
+      "Fortify Carry Weight",
+      "Damage Stamina Regen"
+    ],
+    "tip" : "Giants"
+  },
+  {
+    "name" : "Gleamblossom",
+    "dlc" : "DG",
+    "weight" : "0.1",
+    "value" : "5",
+    "effects" : [
+      "Resist Magic",
+      "Fear",
+      "Regenerate Health",
+      "Paralysis"
+    ],
+    "tip" : "Harvested in Darkfall Cave, Forgotten Vale"
+  },
+  {
+    "name" : "Glow Dust",
+    "weight" : "0.5",
+    "value" : "20",
+    "effects" : [
+      "Damage Magicka",
+      "Damage Magicka Regen",
+      "Fortify Destruction",
+      "Resist Shock"
+    ],
+    "tip" : "Wispmother"
+  },
+  {
+    "name" : "Glowing Mushroom",
+    "weight" : "0.2",
+    "value" : "5",
+    "effects" : [
+      "Resist Shock",
+      "Fortify Destruction",
+      "Fortify Smithing",
+      "Fortify Health"
+    ],
+    "tip" : "Caves, Dwemer ruins"
+  },
+  {
+    "name" : "Grass Pod",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Poison",
+      "Ravage Magicka",
+      "Fortify Alteration",
+      "Restore Magicka"
+    ],
+    "tip" : "Tundras"
+  },
+  {
+    "name" : "Hagraven Claw",
+    "weight" : "0.3",
+    "value" : "20",
+    "effects" : [
+      "Resist Magic",
+      "Lingering Damage Magicka",
+      "Fortify Enchanting",
+      "Fortify Barter"
+    ],
+    "tip" : "Hagraven"
+  },
+  {
+    "name" : "Hagraven Feathers",
+    "weight" : "0.1",
+    "value" : "20",
+    "effects" : [
+      "Damage Magicka",
+      "Fortify Conjuration",
+      "Frenzy",
+      "Weakness to Shock"
+    ],
+    "tip" : "Hagraven"
+  },
+  {
+    "name" : "Hanging Moss",
+    "weight" : "0.3",
+    "value" : "1",
+    "effects" : [
+      "Damage Magicka",
+      "Fortify Health",
+      "Damage Magicka Regen",
+      "Fortify One-Handed"
+    ],
+    "tip" : "Caves, Buildings"
+  },
+  {
+    "name" : "Hawk Beak",
+    "weight" : "0.3",
+    "value" : "15",
+    "effects" : [
+      "Restore Stamina",
+      "Resist Frost",
+      "Fortify Carry Weight",
+      "Resist Shock"
+    ],
+    "tip" : "Hawk"
+  },
+  {
+    "name" : "Hawk Feathers",
+    "weight" : "0.1",
+    "value" : "15",
+    "effects" : [
+      "Cure Disease",
+      "Fortify Light Armor",
+      "Fortify One-Handed",
+      "Fortify Sneak"
+    ],
+    "tip" : "Hawk"
+  },
+  {
+    "name" : "Histcarp",
+    "weight" : "0.3",
+    "value" : "6",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Magicka",
+      "Damage Stamina Regen",
+      "Waterbreathing"
+    ],
+    "tip" : "Flowing water, lakes, barrel of fish"
+  },
+  {
+    "name" : "Honeycomb",
+    "weight" : "1",
+    "value" : "5",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Block",
+      "Fortify Light Armor",
+      "Ravage Stamina"
+    ],
+    "tip" : "Beehive"
+  },
+  {
+    "name" : "Human Flesh",
+    "weight" : "0.3",
+    "value" : "1",
+    "effects" : [
+      "Damage Health",
+      "Paralysis",
+      "Restore Magicka",
+      "Fortify Sneak"
+    ],
+    "tip" : "Falmer Vampire dens"
+  },
+  {
+    "name" : "Human Heart",
+    "weight" : "1",
+    "value" : "0",
+    "effects" : [
+      "Damage Health",
+      "Damage Magicka",
+      "Damage Magicka Regen",
+      "Frenzy"
+    ],
+    "tip" : "Falmer Vampire dens"
+  },
+  {
+    "name" : "Ice Wraith Teeth",
+    "weight" : "0.3",
+    "value" : "30",
+    "effects" : [
+      "Weakness to Frost",
+      "Fortify Heavy Armor",
+      "Invisibility",
+      "Weakness to Fire"
+    ],
+    "tip" : "Ice Wraith"
+  },
+  {
+    "name" : "Imp Stool",
+    "weight" : "0.3",
+    "value" : "0",
+    "effects" : [
+      "Damage Health",
+      "Lingering Damage Health",
+      "Paralysis",
+      "Restore Health"
+    ],
+    "tip" : "Mushrooms"
+  },
+  {
+    "name" : "Jarrin Root",
+    "weight" : "0.5",
+    "value" : "10",
+    "effects" : [
+      "Damage Health",
+      "Damage Magicka",
+      "Damage Stamina",
+      "Damage Magicka Regen"
+    ],
+    "tip" : "Dark Brotherhood Quest"
+  },
+  {
+    "name" : "Jazbay Grapes",
+    "weight" : "0.2",
+    "value" : "1",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Magicka",
+      "Regenerate Magicka",
+      "Ravage Health"
+    ],
+    "tip" : "Hydro-thermal regions"
+  },
+  {
+    "name" : "Juniper Berries",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Weakness to Fire",
+      "Fortify Marksman",
+      "Regenerate Health",
+      "Damage Stamina Regen"
+    ],
+    "tip" : "Juniper Trees"
+  },
+  {
+    "name" : "Large Antlers",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Stamina",
+      "Slow",
+      "Damage Stamina Regen"
+    ],
+    "tip" : "Deer, Elk"
+  },
+  {
+    "name" : "Lavender",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Magic",
+      "Fortify Stamina",
+      "Ravage Magicka",
+      "Fortify Conjuration"
+    ],
+    "tip" : "Outdoors in clumps"
+  },
+  {
+    "name" : "Luna Moth Wing",
+    "weight" : "0.1",
+    "value" : "5",
+    "effects" : [
+      "Damage Magicka",
+      "Fortify Light Armor",
+      "Regenerate Health",
+      "Invisibility"
+    ],
+    "tip" : "Luna Moth"
+  },
+  {
+    "name" : "Moon Sugar",
+    "weight" : "0.3",
+    "value" : "50",
+    "effects" : [
+      "Weakness to Fire",
+      "Resist Frost",
+      "Restore Magicka",
+      "Regenerate Magicka"
+    ],
+    "tip" : "Khajit Caravans"
+  },
+  {
+    "name" : "Mora Tapinella",
+    "weight" : "0.3",
+    "value" : "4",
+    "effects" : [
+      "Restore Magicka",
+      "Lingering Damage Health",
+      "Regenerate Stamina",
+      "Fortify Illusion"
+    ],
+    "tip" : "Dead Trees"
+  },
+  {
+    "name" : "Mudcrab Chitin",
+    "weight" : "0.3",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Cure Disease",
+      "Resist Poison",
+      "Resist Fire"
+    ],
+    "tip" : "Mudcrabs"
+  },
+  {
+    "name" : "Namira's Rot",
+    "weight" : "0.3",
+    "value" : "0",
+    "effects" : [
+      "Damage Magicka",
+      "Fortify Lockpicking",
+      "Fear",
+      "Regenerate Health"
+    ],
+    "tip" : "Caves"
+  },
+  {
+    "name" : "Netch Jelly",
+    "dlc" : "DB",
+    "weight" : "0.5",
+    "value" : "20",
+    "effects" : [
+      "Paralysis",
+      "Fortify Carry Weight",
+      "Restore Stamina",
+      "Fear"
+    ],
+    "tip" : "Netch"
+  },
+  {
+    "name" : "Nightshade",
+    "weight" : "0.1",
+    "value" : "8",
+    "effects" : [
+      "Damage Health",
+      "Damage Magicka Regen",
+      "Lingering Damage Stamina",
+      "Fortify Destruction"
+    ],
+    "tip" : "Graveyards, undead areas"
+  },
+  {
+    "name" : "Nirnroot",
+    "weight" : "0.2",
+    "value" : "10",
+    "effects" : [
+      "Damage Health",
+      "Damage Stamina",
+      "Invisibility",
+      "Resist Magic"
+    ],
+    "tip" : "Near water"
+  },
+  {
+    "name" : "Nordic Barnacle",
+    "weight" : "0.2",
+    "value" : "5",
+    "effects" : [
+      "Damage Magicka",
+      "Waterbreathing",
+      "Regenerate Health",
+      "Fortify Pickpocket"
+    ],
+    "tip" : "Underwater"
+  },
+  {
+    "name" : "Orange Dartwing",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Restore Stamina",
+      "Ravage Magicka",
+      "Fortify Pickpocket",
+      "Lingering Damage Health"
+    ],
+    "tip" : "Hovering above water"
+  },
+  {
+    "name" : "Pearl",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Block",
+      "Restore Magicka",
+      "Resist Shock"
+    ],
+    "tip" : "Satchels, Pearl Oyster (DB)"
+  },
+  {
+    "name" : "Pine Thrush Egg",
+    "weight" : "0.5",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Lockpicking",
+      "Weakness to Poison",
+      "Resist Shock"
+    ],
+    "tip" : "Nests in forests"
+  },
+  {
+    "name" : "Poison Bloom",
+    "dlc" : "DG",
+    "weight" : "0.3",
+    "value" : "5",
+    "effects" : [
+      "Damage Health",
+      "Slow",
+      "Fortify Carry Weight",
+      "Fear"
+    ],
+    "tip" : "Darkfall Cave"
+  },
+  {
+    "name" : "Powdered Mammoth Tusk",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Sneak",
+      "Weakness to Fire",
+      "Fear"
+    ],
+    "tip" : "Giant's Camp"
+  },
+  {
+    "name" : "Purple Mountain Flower",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Sneak",
+      "Lingering Damage Magicka",
+      "Resist Frost"
+    ],
+    "tip" : "Mountain flower clumps"
+  },
+  {
+    "name" : "Red Mountain Flower",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Magicka",
+      "Ravage Magicka",
+      "Fortify Magicka",
+      "Damage Health"
+    ],
+    "tip" : "Mountain flower clumps"
+  },
+  {
+    "name" : "River Betty",
+    "weight" : "0.3",
+    "value" : "15",
+    "effects" : [
+      "Damage Health",
+      "Fortify Alteration",
+      "Slow",
+      "Fortify Carry Weight"
+    ],
+    "tip" : "Lakes, rivers, streams and fish barrels"
+  },
+  {
+    "name" : "Rock Warbler Egg",
+    "weight" : "0.5",
+    "value" : "2",
+    "effects" : [
+      "Restore Health",
+      "Fortify One-Handed",
+      "Damage Stamina",
+      "Weakness to Magic"
+    ],
+    "tip" : "Rock Warbler Nest"
+  },
+  {
+    "name" : "Sabre Cat Tooth",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Heavy Armor",
+      "Fortify Smithing",
+      "Weakness to Poison"
+    ],
+    "tip" : "Sabre Cat,Frost Sabre Cat"
+  },
+  {
+    "name" : "Salmon Roe",
+    "dlc" : "DG",
+    "weight" : "0.2",
+    "value" : "5",
+    "effects" : [
+      "Restore Stamina",
+      "Waterbreathing",
+      "Fortify Magicka",
+      "Regenerate Magicka"
+    ],
+    "tip" : "Salmon"
+  },
+  {
+    "name" : "Salt Pile",
+    "weight" : "0.2",
+    "value" : "2",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Restoration",
+      "Slow",
+      "Regenerate Magicka"
+    ],
+    "tip" : "Merchants, containers, near cooking places"
+  },
+  {
+    "name" : "Scaly Pholiata",
+    "weight" : "0.3",
+    "value" : "4",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Illusion",
+      "Regenerate Stamina",
+      "Fortify Carry Weight"
+    ],
+    "tip" : ""
+  },
+  {
+    "name" : "Scaly Pholiota",
+    "weight" : "0.3",
+    "value" : "4",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Illusion",
+      "Regenerate Stamina",
+      "Fortify Carry Weight"
+    ],
+    "tip" : "Dead birch trees"
+  },
+  {
+    "name" : "Scathecraw",
+    "dlc" : "DB",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Ravage Health",
+      "Ravage Stamina",
+      "Ravage Magicka",
+      "Lingering Damage Health"
+    ],
+    "tip" : "Solstheim"
+  },
+  {
+    "name" : "Silverside Perch",
+    "weight" : "0.3",
+    "value" : "15",
+    "effects" : [
+      "Restore Stamina",
+      "Damage Stamina Regen",
+      "Ravage Health",
+      "Resist Frost"
+    ],
+    "tip" : "Flowing water, lakes, barrel of fish"
+  },
+  {
+    "name" : "Skeever Tail",
+    "weight" : "0.2",
+    "value" : "3",
+    "effects" : [
+      "Damage Stamina Regen",
+      "Ravage Health",
+      "Damage Health",
+      "Fortify Light Armor"
+    ],
+    "tip" : "Skeever"
+  },
+  {
+    "name" : "Slaughterfish Egg",
+    "weight" : "0.2",
+    "value" : "3",
+    "effects" : [
+      "Resist Poison",
+      "Fortify Pickpocket",
+      "Lingering Damage Health",
+      "Fortify Stamina"
+    ],
+    "tip" : "Underwater"
+  },
+  {
+    "name" : "Slaughterfish Scales",
+    "weight" : "0.1",
+    "value" : "3",
+    "effects" : [
+      "Resist Frost",
+      "Lingering Damage Health",
+      "Fortify Heavy Armor",
+      "Fortify Block"
+    ],
+    "tip" : "Slaughterfish"
+  },
+  {
+    "name" : "Small Antlers",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Weakness to Poison",
+      "Fortify Restoration",
+      "Lingering Damage Stamina",
+      "Damage Health"
+    ],
+    "tip" : "Elk"
+  },
+  {
+    "name" : "Small Pearl",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify One-Handed",
+      "Fortify Restoration",
+      "Resist Frost"
+    ],
+    "tip" : "Pearl Oyster (DB)"
+  },
+  {
+    "name" : "Snowberries",
+    "weight" : "0.1",
+    "value" : "4",
+    "effects" : [
+      "Resist Fire",
+      "Fortify Enchanting",
+      "Resist Frost",
+      "Resist Shock"
+    ],
+    "tip" : "Snowberry bush, snowy areas"
+  },
+  {
+    "name" : "Spawn Ash",
+    "dlc" : "DB",
+    "weight" : "0.1",
+    "value" : "20",
+    "effects" : [
+      "Ravage Stamina",
+      "Resist Fire",
+      "Fortify Enchanting",
+      "Ravage Magicka"
+    ],
+    "tip" : "Ash Spawn"
+  },
+  {
+    "name" : "Spider Egg",
+    "weight" : "0.2",
+    "value" : "5",
+    "effects" : [
+      "Damage Stamina",
+      "Damage Magicka Regen",
+      "Fortify Lockpicking",
+      "Fortify Marksman"
+    ],
+    "tip" : "Spider lairs"
+  },
+  {
+    "name" : "Spriggan Sap",
+    "weight" : "0.2",
+    "value" : "15",
+    "effects" : [
+      "Damage Magicka Regen",
+      "Fortify Enchanting",
+      "Fortify Smithing",
+      "Fortify Alteration"
+    ],
+    "tip" : "Spriggan"
+  },
+  {
+    "name" : "Swamp Fungal Pod",
+    "weight" : "0.5",
+    "value" : "3",
+    "effects" : [
+      "Resist Shock",
+      "Lingering Damage Magicka",
+      "Paralysis",
+      "Restore Health"
+    ],
+    "tip" : "Swamps"
+  },
+  {
+    "name" : "Taproot",
+    "weight" : "0.5",
+    "value" : "15",
+    "effects" : [
+      "Weakness to Magic",
+      "Fortify Illusion",
+      "Regenerate Magicka",
+      "Restore Magicka"
+    ],
+    "tip" : "Spriggan"
+  },
+  {
+    "name" : "Thistle Branch",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Frost",
+      "Ravage Stamina",
+      "Resist Poison",
+      "Fortify Heavy Armor"
+    ],
+    "tip" : "Thistle Plant"
+  },
+  {
+    "name" : "Torchbug Thorax",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Restore Stamina",
+      "Lingering Damage Magicka",
+      "Weakness to Magic",
+      "Fortify Stamina"
+    ],
+    "tip" : "Torchbugs, glowing at night"
+  },
+  {
+    "name" : "Trama Root",
+    "dlc" : "DB",
+    "weight" : "0.2",
+    "value" : "1",
+    "effects" : [
+      "Weakness to Shock",
+      "Fortify Carry Weight",
+      "Damage Magicka",
+      "Slow"
+    ],
+    "tip" : "Ashen areas of Solstheim"
+  },
+  {
+    "name" : "Troll Fat",
+    "weight" : "1",
+    "value" : "15",
+    "effects" : [
+      "Resist Poison",
+      "Fortify Two-handed",
+      "Frenzy",
+      "Damage Health"
+    ],
+    "tip" : "Trolls"
+  },
+  {
+    "name" : "Tundra Cotton",
+    "weight" : "0.1",
+    "value" : "1",
+    "effects" : [
+      "Resist Magic",
+      "Fortify Magicka",
+      "Fortify Block",
+      "Fortify Barter"
+    ],
+    "tip" : "High mountains below snow line, tundra"
+  },
+  {
+    "name" : "Vampire Dust",
+    "weight" : "0.2",
+    "value" : "25",
+    "effects" : [
+      "Invisibility",
+      "Restore Magicka",
+      "Regenerate Health",
+      "Cure Disease"
+    ],
+    "tip" : "Vampires, The Silver Hand"
+  },
+  {
+    "name" : "Void Salts",
+    "weight" : "0.2",
+    "value" : "125",
+    "effects" : [
+      "Weakness to Shock",
+      "Resist Magic",
+      "Damage Health",
+      "Fortify Magicka"
+    ],
+    "tip" : "Storm Atronach"
+  },
+  {
+    "name" : "Wheat",
+    "weight" : "0.1",
+    "value" : "5",
+    "effects" : [
+      "Restore Health",
+      "Fortify Health",
+      "Damage Stamina Regen",
+      "Lingering Damage Magicka"
+    ],
+    "tip" : "Grows on farms, containers"
+  },
+  {
+    "name" : "White Cap",
+    "weight" : "0.3",
+    "value" : "0",
+    "effects" : [
+      "Weakness to Frost",
+      "Fortify Heavy Armor",
+      "Restore Magicka",
+      "Ravage Magicka"
+    ],
+    "tip" : "Mushroom clusters near caves or dungeons"
+  },
+  {
+    "name" : "Wisp Wrappings",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Restore Stamina",
+      "Fortify Destruction",
+      "Fortify Carry Weight",
+      "Resist Magic"
+    ],
+    "tip" : "Wispmother"
+  },
+  {
+    "name" : "Yellow Mountain Flower",
+    "dlc" : "DG",
+    "weight" : "0.1",
+    "value" : "2",
+    "effects" : [
+      "Resist Poison",
+      "Fortify Restoration",
+      "Fortify Health",
+      "Damage Stamina Regen"
+    ],
+    "tip" : "Darkfall Cave"
+  }
+]
