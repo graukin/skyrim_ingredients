@@ -121,12 +121,30 @@ def print_all_ingredients():
     l=r.db(db_name).table(t_name).pluck("name").order_by(r.asc("name")).run(connection)
     for item in l:
         print " ",item["name"]
+    print r.db(db_name).table(t_name).count().run(connection), "ingredient(s)"
 
 def print_all_effects():
     print "All effects:"
     l=r.db(db_name).table(t_name).concat_map(lambda ingr: ingr['effects']).distinct().run(connection)
     for item in l:
         print " ",item
+    print len(l), "effect(s)"
+
+def print_raw_ingredient(obj):
+    print "Name:", obj["name"]
+    if "dlc" in obj.keys():
+        print "DLC: ", obj["dlc"]
+    print "Value:", obj["value"]
+    print "Weight:", obj["weight"]
+    print "Effects:"
+    for e in obj["effects"]:
+        print " ", e
+    print "Tip:", obj["tip"]
+
+def print_ingredient(name):
+    l=r.db(db_name).table(t_name).filter({"name" : name}).run(connection)
+    for item in l:
+        print_raw_ingredient(item)
 
 def main(argv=None):
     connect()
@@ -146,6 +164,8 @@ def main(argv=None):
             print_all_ingredients()
         elif string=="all effects" or string=="effects":
             print_all_effects()
+        elif string.startswith("i ") and len(string) > 2:
+            print_ingredient(string[2:])
 
 if __name__ == "__main__":
     sys.exit(main())
