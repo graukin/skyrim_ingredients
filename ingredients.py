@@ -202,6 +202,41 @@ def print_combination(effects):
         ).run(connection)
         for item in l:
             print_raw_combination(item)
+        l=r.db(db_name).table(t_name).filter(lambda row: row['effects'].contains(effects[0]) & ~row['effects'].contains(effects[1])).inner_join(
+            r.db(db_name).table(t_name).filter(lambda row: ~row['effects'].contains(effects[0]) & row['effects'].contains(effects[1])),
+            lambda lrow, rrow:
+                lrow['name'] < rrow['name']
+        ).map(
+            lambda res:
+                r.expr({
+                    'name1' : res['left']['name'],
+                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
+                    'name2' : res['right']['name'],
+                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
+                    'effects1' : res['left']['effects'],
+                    'effects2' : res['right']['effects']
+                })
+        ).inner_join(
+            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])),
+            lambda lrow, rrow:
+                lrow['name1'].ne(rrow['name']) &
+                lrow['name2'].ne(rrow['name'])
+        ).map(
+            lambda res:
+                r.expr({
+                     'name1' : res['left']['name1'],
+                     'dlc1' : res['left']['dlc1'],
+                     'name2' : res['left']['name2'],
+                     'dlc2' : res['left']['dlc2'],
+                     'name3' : res['right']['name'],
+                     'dlc3' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
+                     'effects' : res['left']['effects1'].set_intersection(res['left']['effects2']).set_union(
+                     res['left']['effects1'].set_intersection(res['right']['effects'])).set_union(
+                     res['left']['effects2'].set_intersection(res['right']['effects'])).distinct()
+                })
+        ).run(connection)
+        for item in l:
+            print_raw_combination(item)
 
 def main(argv=None):
     connect()
