@@ -115,14 +115,20 @@ def print_help():
     'all effects' or just 'effects' for the whole list of effects
     'i <ingredient_name>' for info about given ingredient. Case-sensitive :(
     'e <effect_name>' for list of ingredients with given effect
+    'c <effect1> [+ <effect2> [+ <effect3>]...]' for list of ingredients for given combination
     'help' or 'h' for this message :)
     'quit' or 'exit' for exit'''
 
+def construct_name(obj, name_key, dlc_key):
+    if dlc_key in obj.keys() and obj[dlc_key] != None:
+         return obj[name_key] + ' [' + obj[dlc_key] + ']'
+    return obj[name_key]
+
 def print_all_ingredients():
     print 'All ingredients:'
-    l=r.db(db_name).table(t_name).pluck('name').order_by(r.asc('name')).run(connection)
+    l=r.db(db_name).table(t_name).pluck('name', 'dlc').order_by(r.asc('name')).run(connection)
     for item in l:
-        print ' ',item['name']
+        print ' ', construct_name(item, 'name', 'dlc')
     print r.db(db_name).table(t_name).count().run(connection), 'ingredient(s)'
 
 def print_all_effects():
@@ -151,10 +157,51 @@ def print_ingredient(name):
 def print_effect(name):
     l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(name)).pluck('name', 'dlc').order_by(r.asc('name')).run(connection)
     for item in l:
-        res=item['name']
-        if 'dlc' in item.keys():
-            res=res+' ['+item['dlc']+']'
-        print res
+        print construct_name(item, 'name', 'dlc')
+
+def print_raw_combination(obj):
+    res=''
+    for key in obj.keys():
+        if key.startswith('name'):
+            res=res + ' + ' + construct_name(obj, key, 'dlc' if key=='name' else 'dlc'+key[4:])
+    print res[3:], '->', ', '.join(obj['effects'])
+
+def print_combination(effects):
+    if len(effects)==1:
+        l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0])).inner_join(
+            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0])),
+            lambda lrow, rrow:
+                lrow['name'] < rrow['name']
+        ).map(
+            lambda res:
+                r.expr({
+                    'name1' : res['left']['name'],
+                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
+                    'name2' : res['right']['name'],
+                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
+                    'effects' : res['left']['effects'].set_intersection(res['right']['effects'])
+                })
+        ).run(connection)
+        for item in l:
+            print_raw_combination(item)
+    elif len(effects)==2:
+        # dark magic starts here
+        l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])).inner_join(
+            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])),
+            lambda lrow, rrow:
+                lrow['name'] < rrow['name']
+        ).map(
+            lambda res:
+                r.expr({
+                    'name1' : res['left']['name'],
+                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
+                    'name2' : res['right']['name'],
+                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
+                    'effects' : res['left']['effects'].set_intersection(res['right']['effects'])
+                })
+        ).run(connection)
+        for item in l:
+            print_raw_combination(item)
 
 def main(argv=None):
     connect()
@@ -178,6 +225,9 @@ def main(argv=None):
             print_ingredient(string[2:])
         elif string.startswith('e ') and len(string) > 2:
             print_effect(string[2:])
+        elif string.startswith('c ') and len(string) > 2:
+            l=string[2:].split('+')
+            print_combination(l)
 
 if __name__ == '__main__':
     sys.exit(main())
