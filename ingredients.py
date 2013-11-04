@@ -114,7 +114,7 @@ def print_help():
     'all ingredients' or just 'ingredients' for the whole list of ingredients
     'all effects' or just 'effects' for the whole list of effects
     'i <ingredient_name>' for info about given ingredient. Case-sensitive :(
-    'e <effect_name>' for list of ingredients with given effect
+    'e <effect_name>' for list of ingredients with given effect. Also case-sensitive
     'c <effect1> [+ <effect2> [+ <effect3>]...]' for list of ingredients for given combination
     'help' or 'h' for this message :)
     'quit' or 'exit' for exit'''
@@ -262,6 +262,7 @@ def main(argv=None):
             print_effect(string[2:])
         elif string.startswith('c ') and len(string) > 2:
             l=string[2:].split('+')
+            l=map(str.strip, l)
             print_combination(l)
 
 if __name__ == '__main__':
