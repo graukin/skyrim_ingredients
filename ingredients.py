@@ -24,7 +24,6 @@ def work_out_args(argv):
         if connection==None:
             exit()
         else:
-            print 'connected successfully'
             load_data(args.load_data, args.force)
 
 def print_no_db():
@@ -37,6 +36,7 @@ def connect():
     global connection
     try:
         connection=r.connect(host=RDB_HOST, port=RDB_PORT);
+        print 'connected successfully'
     except RqlRuntimeError as e:
         print e
 
@@ -120,6 +120,9 @@ def print_help():
     'help' or 'h' for this message :)
     'quit' or 'exit' for exit'''
 
+# work with data
+
+# from object obj { name_key : name, dlc_key : dlc(optional)} get 'name' or 'name [dlc]'
 def construct_name(obj, name_key, dlc_key):
     if dlc_key in obj.keys() and obj[dlc_key] != None:
          return obj[name_key] + ' [' + obj[dlc_key] + ']'
