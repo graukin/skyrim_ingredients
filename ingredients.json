@@ -1032,18 +1032,6 @@
     "tip" : "Merchants, containers, near cooking places"
   },
   {
-    "name" : "Scaly Pholiata",
-    "weight" : "0.3",
-    "value" : "4",
-    "effects" : [
-      "Weakness to Magic",
-      "Fortify Illusion",
-      "Regenerate Stamina",
-      "Fortify Carry Weight"
-    ],
-    "tip" : ""
-  },
-  {
     "name" : "Scaly Pholiota",
     "weight" : "0.3",
     "value" : "4",
