@@ -116,6 +116,7 @@ def print_help():
     'i <ingredient_name>' for info about given ingredient. Case-sensitive :(
     'e <effect_name>' for list of ingredients with given effect. Also case-sensitive
     'c <effect1> [+ <effect2> [+ <effect3>]...]' for list of ingredients for given combination
+    'm <ingredient1> + <ingredient2> [ + <ingredient3>] for result of mixing given ingredients
     'help' or 'h' for this message :)
     'quit' or 'exit' for exit'''
 
@@ -238,6 +239,46 @@ def print_combination(effects):
         for item in l:
             print_raw_combination(item)
 
+def get_effect_list(ingredient):
+    l=r.db(db_name).table(t_name).filter(r.row['name']==ingredient).pluck('effects').run(connection)
+    res_list=[]
+    for item in l:
+        res_list=item['effects']
+    if len(res_list) != 4:
+        return None
+    return res_list
+
+def print_mix_result(ingredients):
+    if len(ingredients) < 2 or len(ingredients) > 3:
+        print 'You need mix 2 or 3 ingredients for potion'
+        return
+    res=None
+    l1=get_effect_list(ingredients[0])
+    l2=get_effect_list(ingredients[1])
+    if len(ingredients) == 2:
+        if l1==None or l2==None:
+            res=None
+        else:
+            res=[val for val in l1 if val in l2]
+    else:
+        l3=get_effect_list(ingredients[2])
+        if l1==None or l2==None or l3==None:
+            res=None
+        else:
+            res=[val for val in l1 if val in l2]
+            res2=[val for val in l1 if val in l3]
+            res3=[val for val in l2 if val in l3]
+            for val in res2:
+                if not val in res:
+                    res.append(val)
+            for val in res3:
+                if not val in res:
+                    res.append(val)
+    if res==None:
+        print ' + '.join(ingredients), '-> Nothing'
+    else:
+        print ' + '.join(ingredients), '->', ', '.join(res)
+
 def main(argv=None):
     connect()
     work_out_args(argv)
@@ -264,6 +305,12 @@ def main(argv=None):
             l=string[2:].split('+')
             l=map(str.strip, l)
             print_combination(l)
+        elif string.startswith('m ') and len(string) > 2:
+            l=string[2:].split('+')
+            l=map(str.strip, l)
+            print_mix_result(l)
+        else:
+            print 'Unknown command. Try "h" or "help"'
 
 if __name__ == '__main__':
     sys.exit(main())
