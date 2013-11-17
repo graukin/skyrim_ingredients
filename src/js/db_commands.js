@@ -63,9 +63,9 @@ function getAllEffects(callback) {
 // get ingredient by name
 function getIngredient(name, callback) {
 	var functionName = "getIngredient (" + name + ")";
-  console.info("db.getIngredient(%s);", name);
+  console.info("db.getIngredient(%s)", name);
   onConnect(function (err, connection) {
-    console.info("[INFO ][%s][%s] %s", connection['_id'], functionName, name);
+    console.info("[INFO ][%s][%s]", connection['_id'], functionName);
 
     r.db(dbConfig.db).table(dbConfig.table).filter({'name': name}).limit(1).run(connection, function(err, cursor) {
       if(err) {
@@ -89,9 +89,9 @@ function getIngredient(name, callback) {
 // get effect by name
 function getEffect(name, callback) {
 	var functionName = "getEffect (" + name + ")";
-  console.info("db.getEffect(%s);", name);
+  console.info("db.getEffect(%s)", name);
   onConnect(function (err, connection) {
-    console.info("[INFO ][%s][%s] %s", connection['_id'], functionName, name);
+    console.info("[INFO ][%s][%s]", connection['_id'], functionName);
 
     r.db(dbConfig.db).table(dbConfig.table).filter(r.row('effects').contains(name)).pluck('name', 'dlc').orderBy(r.asc('name')).run(connection, function(err, cursor) {
       if(err) {

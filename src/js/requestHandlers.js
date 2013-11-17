@@ -69,11 +69,72 @@ function info(response, query) {
   }
 }
 
+function mix_smth(mix_method, smth_list, res_map, final_method, response) {
+	smth_list.forEach(function(value, index, array) {
+		mix_method(value, function(err, result) {
+			if (err) {
+				res_map[value] = undefined;
+				makeBadResponse(response);
+			} else {
+				res_map[value] = result.effects;
+			  if(Object.keys(res_map).length == smth_list.length) {
+			    final_method(res_map, response);
+			  }
+			}
+		});
+	});
+}
+
+function mix_ingredients(map, response) {
+	var map_keys = Object.keys(map);
+	var effects={};
+	Object.keys(map).forEach(function (value, index, array){
+		map[value].forEach(function(value, index, array) {
+			if (value in effects) {
+				effects[value] = effects[value] + 1;
+			} else {
+				effects[value] = 1;
+			}
+		});
+		map_keys.shift();
+		if (map_keys.length === 0) {
+			var res = "";
+			var effects_keys = Object.keys(effects);
+			Object.keys(effects).forEach(function(value, index, array) {
+				if (effects[value] > 1) {
+					res = res + " + " + value;
+				}
+				effects_keys.shift();
+				if (effects_keys.length === 0) {
+					if (res.length === 0) {
+						makeBadResponse(response);
+					} else {
+						response.writeHead(200, { "Content-Type" : "text/plain" });
+						response.write("I have something: " + res.substring(3, res.length));
+						response.end();
+					}
+				}
+			});
+		}
+	});
+}
+
 function mix(response, query) {
   console.log("mix, Q = [" + query + "]");
-  response.writeHead(200, { "Content-Type" : "text/plain" });
-  response.write("I'm alive! I need mix");
-  response.end();
+  var list=[];
+  for (var k in query) {
+  	if (k.indexOf('n') == 0) {
+  		list.push(query[k]);
+  	}
+  }
+  
+  if (query.type == 'ingredients') {
+  	mix_smth(db.getIngredient, list, {}, mix_ingredients, response);
+  } else if (query.type == 'effects') {
+  	
+  } else {
+  	makeBadResponse(response);
+  }
 }
 
 exports.list = list;
