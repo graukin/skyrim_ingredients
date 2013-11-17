@@ -76,7 +76,8 @@ function mix_smth(mix_method, smth_list, res_map, final_method, response) {
 				res_map[value] = undefined;
 				makeBadResponse(response);
 			} else {
-				res_map[value] = result.effects;
+				res_map[value] = result;
+				console.log("%s %s", value, result);
 			  if(Object.keys(res_map).length == smth_list.length) {
 			    final_method(res_map, response);
 			  }
@@ -89,7 +90,7 @@ function mix_ingredients(map, response) {
 	var map_keys = Object.keys(map);
 	var effects={};
 	Object.keys(map).forEach(function (value, index, array){
-		map[value].forEach(function(value, index, array) {
+		map[value]['effects'].forEach(function(value, index, array) {
 			if (value in effects) {
 				effects[value] = effects[value] + 1;
 			} else {
@@ -119,6 +120,42 @@ function mix_ingredients(map, response) {
 	});
 }
 
+function list2list(inp) {
+	var outp = [];
+	inp.forEach(function(value, index, array) {
+		console.log(value);
+		var n = value['name'];
+		if ('dlc' in value) {
+			n = n + ' [' + value['dlc'] + ']';
+		}
+		console.log(n);
+		outp.push(n);
+		if (outp.length == inp.length)
+			return outp;
+	});
+}
+
+function mix_effects(map, response) {
+	var map_keys = Object.keys(map);
+	var res = {};
+	var smth_bad = undefined;
+	Object.keys(map).forEach(function(value, index, array) {
+		res[value] = map[value];
+		if (map[value] == undefined)
+			smth_bad = value;
+		map_keys.shift();
+		if (map_keys.length == 0) {
+			if (smth_bad == undefined) {
+				response.writeHead(200, { "Content-Type" : "text/plain" });
+				response.write("I have something: " + JSON.stringify(res));
+				response.end();
+			} else {
+				makeBadResponse(response);
+			}
+		}
+	});
+}
+
 function mix(response, query) {
   console.log("mix, Q = [" + query + "]");
   var list=[];
@@ -131,7 +168,7 @@ function mix(response, query) {
   if (query.type == 'ingredients') {
   	mix_smth(db.getIngredient, list, {}, mix_ingredients, response);
   } else if (query.type == 'effects') {
-  	
+  	mix_smth(db.getEffect, list, {}, mix_effects, response);
   } else {
   	makeBadResponse(response);
   }
