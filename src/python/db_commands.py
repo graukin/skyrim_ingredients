@@ -133,8 +133,12 @@ def print_ingredient(name):
     for item in l:
         print_raw_ingredient(item)
 
-def print_effect(name):
+def get_effect(name):
     l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(name)).pluck('name', 'dlc').order_by(r.asc('name')).run(connection)
+    return l
+
+def print_effect(name):
+    l=get_effect(name)
     for item in l:
         print construct_name(item, 'name', 'dlc')
 
@@ -147,75 +151,36 @@ def print_raw_combination(obj):
 
 def print_combination(effects):
     if len(effects)==1:
-        l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0])).inner_join(
-            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0])),
-            lambda lrow, rrow:
-                lrow['name'] < rrow['name']
-        ).map(
-            lambda res:
-                r.expr({
-                    'name1' : res['left']['name'],
-                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
-                    'name2' : res['right']['name'],
-                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
-                    'effects' : res['left']['effects'].set_intersection(res['right']['effects'])
-                })
-        ).run(connection)
+        l=get_effect(effects[0])
+        e_list=[]
         for item in l:
-            print_raw_combination(item)
+            e_list.append(construct_name(item, 'name', 'dlc'))
+        for i in range(0, len(e_list)-2):
+            for j in range(i+1, len(e_list)-1):
+                print e_list[i], '+', e_list[j]
     elif len(effects)==2:
-        # dark magic starts here
-        l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])).inner_join(
-            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])),
-            lambda lrow, rrow:
-                lrow['name'] < rrow['name']
-        ).map(
-            lambda res:
-                r.expr({
-                    'name1' : res['left']['name'],
-                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
-                    'name2' : res['right']['name'],
-                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
-                    'effects' : res['left']['effects'].set_intersection(res['right']['effects'])
-                })
-        ).run(connection)
+        l=get_effect(effects[0])
+        e_list_0=[]
         for item in l:
-            print_raw_combination(item)
-        l=r.db(db_name).table(t_name).filter(lambda row: row['effects'].contains(effects[0]) & ~row['effects'].contains(effects[1])).inner_join(
-            r.db(db_name).table(t_name).filter(lambda row: ~row['effects'].contains(effects[0]) & row['effects'].contains(effects[1])),
-            lambda lrow, rrow:
-                lrow['name'] < rrow['name']
-        ).map(
-            lambda res:
-                r.expr({
-                    'name1' : res['left']['name'],
-                    'dlc1' : r.branch(res['left'].has_fields('dlc'), res['left']['dlc'], None),
-                    'name2' : res['right']['name'],
-                    'dlc2' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
-                    'effects1' : res['left']['effects'],
-                    'effects2' : res['right']['effects']
-                })
-        ).inner_join(
-            r.db(db_name).table(t_name).filter(r.row['effects'].contains(effects[0], effects[1])),
-            lambda lrow, rrow:
-                lrow['name1'].ne(rrow['name']) &
-                lrow['name2'].ne(rrow['name'])
-        ).map(
-            lambda res:
-                r.expr({
-                     'name1' : res['left']['name1'],
-                     'dlc1' : res['left']['dlc1'],
-                     'name2' : res['left']['name2'],
-                     'dlc2' : res['left']['dlc2'],
-                     'name3' : res['right']['name'],
-                     'dlc3' : r.branch(res['right'].has_fields('dlc'), res['right']['dlc'], None),
-                     'effects' : res['left']['effects1'].set_intersection(res['left']['effects2']).set_union(
-                     res['left']['effects1'].set_intersection(res['right']['effects'])).set_union(
-                     res['left']['effects2'].set_intersection(res['right']['effects'])).distinct()
-                })
-        ).run(connection)
+            e_list_0.append(construct_name(item, 'name', 'dlc'))
+        l=get_effect(effects[1])
+        e_list_1=[]
         for item in l:
-            print_raw_combination(item)
+            e_list_1.append(construct_name(item, 'name', 'dlc'))
+
+        both = [val for val in e_list_0 if val in e_list_1]
+        # for ingredients with both effects:
+        if len(both) > 1:
+            for i in range(0, len(both)-2):
+                for j in range(i+1, len(both)-1):
+                    print both[i], '+', both[j]
+        # for other ingredients:
+        l1 = [val for val in e_list_0 if not val in e_list_1]
+        l2 = [val for val in e_list_1 if not val in e_list_0]
+        for f in l1:
+            for m in both:
+                for l in l2:
+                    print f, '+', m, '+', l
 
 def get_effect_list(ingredient):
     l=r.db(db_name).table(t_name).filter(r.row['name']==ingredient).pluck('effects').run(connection)
