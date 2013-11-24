@@ -39,6 +39,7 @@
   },
   {
     "name" : "Ash Hopper Jelly",
+    "dlc" : "DB",
     "weight" : "0.3",
     "value" : "20",
     "effects" : [
