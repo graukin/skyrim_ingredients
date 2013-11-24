@@ -1,19 +1,41 @@
+import sys
+
+try:
+    from colors import *
+except ImportError:
+    colors_lib=False
+else:
+    colors_lib=True
+
 class ingr_printer:
     def __init__ (self):
         self.offset4 = '    '
         self.offset2 = '  '
         self.offset0 = ''
 
-    def bake_ingredient_name(self, ingr, prefix):
-        if 'dlc' in ingr:
-            res=prefix + ingr['name'] + ' [' + ingr['dlc'] + ']'
+    def print_status(self):
+        print colors_lib
+
+    def try_to_color(self, text, fg_color=None, style_name=None):
+        if colors_lib:
+            return color(text, fg=fg_color, style=style_name)
         else:
-            res=prefix + ingr['name']
+            return text
+
+    def bake_ingredient_name(self, ingr, prefix):
+        res=prefix
+        if 'dlc' in ingr:
+            res=res + self.try_to_color(ingr['name'] + ' [' + ingr['dlc'] + ']', style_name='italic')
+        else:
+            res=res + ingr['name']
         return res
 
     def bake_effect_name(self, effect_name, prefix):
-        res=prefix + effect_name
-        return res
+        res=prefix
+        if str(effect_name).startswith('Damage '):
+            return res + self.try_to_color(effect_name, fg_color='red')
+        else:
+            return res + effect_name
 
     def print_all_ingredients(self, ingr_list):
         print 'Ingredients:'
