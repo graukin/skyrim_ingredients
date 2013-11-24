@@ -1,5 +1,3 @@
-import sys
-
 try:
     from colors import *
 except ImportError:
@@ -12,12 +10,13 @@ class ingr_printer:
         self.offset4 = '    '
         self.offset2 = '  '
         self.offset0 = ''
+        self.use_colors=True
 
     def print_status(self):
         print colors_lib
 
     def try_to_color(self, text, fg_color=None, style_name=None):
-        if colors_lib:
+        if colors_lib and self.use_colors:
             return color(text, fg=fg_color, style=style_name)
         else:
             return text
@@ -32,8 +31,16 @@ class ingr_printer:
 
     def bake_effect_name(self, effect_name, prefix):
         res=prefix
-        if str(effect_name).startswith('Damage '):
+        if effect_name.startswith('Damage ') or effect_name.startswith('Lingering ') or effect_name.startswith('Ravage '):
             return res + self.try_to_color(effect_name, fg_color='red')
+        elif effect_name.startswith('Weakness '):
+            return res + self.try_to_color(effect_name, fg_color='yellow')
+        elif effect_name.startswith('Fortify ') or effect_name.startswith('Restore '):
+            return res + self.try_to_color(effect_name, fg_color='blue')
+        elif effect_name.startswith('Resist '):
+            return res + self.try_to_color(effect_name, fg_color='cyan')
+        elif effect_name.startswith('Regenerate '):
+            return res + self.try_to_color(effect_name, fg_color='magenta')
         else:
             return res + effect_name
 
