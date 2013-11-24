@@ -3,8 +3,10 @@ import argparse
 import json
 
 import db_commands as db
+import ingr_printer as pr
 
 prompt = '> '
+printer = None
 
 def work_out_args(argv):
     parser=argparse.ArgumentParser('')
@@ -16,6 +18,10 @@ def work_out_args(argv):
             exit()
         else:
             db.load_data(args.load_data, args.force)
+
+def prepare_printer():
+    global printer
+    printer = pr.ingr_printer()
 
 def print_help():
     print '''Commands:
@@ -31,6 +37,7 @@ def print_help():
 def main(argv=None):
     db.connect()
     work_out_args(argv)
+    prepare_printer()
     if not db.check():
         db.close_all()
         return
@@ -43,21 +50,24 @@ def main(argv=None):
         if string=='help' or string=='h':
             print_help()
         elif string=='all ingredients' or string=='ingredients':
-            db.print_all_ingredients()
+            printer.print_all_ingredients(db.get_all_ingredients())
         elif string=='all effects' or string=='effects':
-            db.print_all_effects()
+            printer.print_all_effects(db.get_all_effects())
         elif string.startswith('i ') and len(string) > 2:
-            db.print_ingredient(string[2:])
+            printer.print_ingredient_info(db.get_ingredient(string[2:]))
         elif string.startswith('e ') and len(string) > 2:
-            db.print_effect(string[2:])
+            printer.print_effect_info(db.get_effect(string[2:]))
         elif string.startswith('c ') and len(string) > 2:
             l=string[2:].split('+')
             l=map(str.strip, l)
-            db.print_combination(l)
+            printer.print_combination_stack(db.get_combinations(l))
         elif string.startswith('m ') and len(string) > 2:
             l=string[2:].split('+')
             l=map(str.strip, l)
-            db.print_mix_result(l)
+            i_list=[]
+            for i in l:
+                i_list.append(db.get_ingredient(i))
+            printer.print_combination_stack([[i_list, db.get_mix_result(l)]])
         else:
             print 'Unknown command. Try "h" or "help"'
 

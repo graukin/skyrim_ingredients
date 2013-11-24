@@ -96,37 +96,19 @@ def load_data(path2data, force_load):
     print cnt, 'new items are loaded'
 
 # work with data
-
-# from object obj { name_key : name, dlc_key : dlc(optional)} get 'name' or 'name [dlc]'
-def construct_name(obj, name_key, dlc_key):
-    if dlc_key in obj.keys() and obj[dlc_key] != None:
-         return obj[name_key] + ' [' + obj[dlc_key] + ']'
-    return obj[name_key]
-
-def print_all_ingredients():
-    print 'All ingredients:'
+def get_all_ingredients():
     l=r.db(db_name).table(t_name).pluck('name', 'dlc').order_by(r.asc('name')).run(connection)
+    res=[]
     for item in l:
-        print ' ', construct_name(item, 'name', 'dlc')
-    print r.db(db_name).table(t_name).count().run(connection), 'ingredient(s)'
+        res.append(item)
+    return res
 
-def print_all_effects():
-    print 'All effects:'
+def get_all_effects():
     l=r.db(db_name).table(t_name).concat_map(lambda ingr: ingr['effects']).distinct().run(connection)
+    res=[]
     for item in l:
-        print ' ',item
-    print len(l), 'effect(s)'
-
-def print_raw_ingredient(obj):
-    print 'Name:', obj['name']
-    if 'dlc' in obj.keys():
-        print 'DLC: ', obj['dlc']
-    print 'Value:', obj['value']
-    print 'Weight:', obj['weight']
-    print 'Effects:'
-    for e in obj['effects']:
-        print ' ', e
-    print 'Tip:', obj['tip']
+        res.append(item)
+    return res
 
 def get_ingredient(name):
     l=r.db(db_name).table(t_name).filter({'name' : name}).limit(1).run(connection)
@@ -135,25 +117,18 @@ def get_ingredient(name):
         res=item
     return res
 
-def print_ingredient(name):
-    l=get_ingredient(name)
-    print_raw_ingredient(l)
-
-def get_effect(name):
+def get_effect_db(name):
     l=r.db(db_name).table(t_name).filter(r.row['effects'].contains(name)).pluck('name', 'dlc', 'effects').order_by(r.asc('name')).run(connection)
     return l
 
-def print_effect(name):
-    l=get_effect(name)
+def get_effect(name):
+    l=get_effect_db(name)
+    res=[]
     for item in l:
-        print construct_name(item, 'name', 'dlc')
-
-def print_raw_combination(obj):
-    res=''
-    for key in obj.keys():
-        if key.startswith('name'):
-            res=res + ' + ' + construct_name(obj, key, 'dlc' if key=='name' else 'dlc'+key[4:])
-    print res[3:], '->', ', '.join(obj['effects'])
+        res.append(item)
+    if len(res) == 0:
+        res=None
+    return res
 
 def check_combination(ingr_list, check_list):
     e_map={};
@@ -170,21 +145,21 @@ def check_combination(ingr_list, check_list):
                 return []
     return res_list
 
-def print_combination(effects):
+def get_combinations(effects):
     ingr_map={}
     for effect in effects:
         l=get_effect(effect)
         for item in l:
             if not item['name'] in ingr_map:
                 ingr_map[item['name']]=item
-
+    res=[]
     # 2 ingredients
     for in1 in ingr_map:
         for in2 in ingr_map:
             if in1 < in2:
                 combo = check_combination([ingr_map[in1], ingr_map[in2]], effects)
                 if combo != None and len(combo) > 0:
-                    print construct_name(ingr_map[in1], 'name', 'dlc'), '+', construct_name(ingr_map[in2], 'name', 'dlc'), '->', ', '.join(combo)
+                    res.append([[ingr_map[in1], ingr_map[in2]], combo])
     # 3 ingredients
     for in1 in ingr_map:
         for in2 in ingr_map:
@@ -192,21 +167,15 @@ def print_combination(effects):
                 if in1 < in2 and in2 < in3:
                     combo = check_combination([ingr_map[in1], ingr_map[in2], ingr_map[in3]], effects)
                     if combo != None and len(combo) > 0:
-                        print construct_name(ingr_map[in1], 'name', 'dlc'), '+', construct_name(ingr_map[in2], 'name', 'dlc'), '+', construct_name(ingr_map[in3], 'name', 'dlc'), '->', ', '.join(combo)
+                        res.append([[ingr_map[in1], ingr_map[in2], ingr_map[in3]], combo])
+    if len(res) == 0:
+        res=None
+    return res
 
-def get_effect_list(ingredient):
-    l=r.db(db_name).table(t_name).filter(r.row['name']==ingredient).pluck('effects').run(connection)
-    res_list=[]
-    for item in l:
-        res_list=item['effects']
-    if len(res_list) != 4:
-        return None
-    return res_list
-
-def print_mix_result(ingredients):
+def get_mix_result(ingredients):
     if len(ingredients) < 2 or len(ingredients) > 3:
         print 'You need mix 2 or 3 ingredients for potion'
-        return
+        return None
     res=None
     ingr_list=[]
     ingr_list.append(get_ingredient(ingredients[0]))
@@ -214,7 +183,6 @@ def print_mix_result(ingredients):
     if len(ingredients) == 3:
         ingr_list.append(get_ingredient(ingredients[2]))
     res=check_combination(ingr_list, None)
-    if res==None:
-        print ' + '.join(ingredients), '-> Nothing'
-    else:
-        print ' + '.join(ingredients), '->', ', '.join(res)
+    if len(res) == 0:
+        res=None
+    return res
