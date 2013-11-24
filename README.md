@@ -12,11 +12,13 @@ Skyrim is a videogame by Bethesda. There is a special skill in it called alchemy
 
 ### Data
 
-JSON data compiled from [this source](http://skyrim.melian.cc/?cmd=cmdSkyrimIngredientList) using script-magic. But on November,4 there was an error in the list on site, so here is corrected version of it
+JSON data compiled from [this source](http://skyrim.melian.cc/?cmd=cmdSkyrimIngredientList) using script-magic. But on November,4 there were some errors in the list on site, so here is corrected version of it
 
 ### Python
 
-Python script understands -h or --help key. Also you may print 'help' or 'h' while it's running
+Python script understands -h or --help key. Also you may print 'help' or 'h' while it's running.
+
+In the nearest future lists will be nice and colored. To use it you'll need [ansicolors](https://github.com/verigak/colors) library
 
 ### Node.js
 
