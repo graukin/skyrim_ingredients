@@ -1,48 +1,50 @@
-try:
-    from colors import *
-except ImportError:
-    colors_lib=False
-else:
-    colors_lib=True
+import os
+import json
+import brush as b
 
 class ingr_printer:
-    def __init__ (self):
+    def __init__ (self, file_name):
         self.offset4 = '    '
         self.offset2 = '  '
         self.offset0 = ''
-        self.use_colors=True
+        config_data = open(file_name)
+        config=json.load(config_data)
+        config_data.close()
+        self.load_common(config['common'])
+        self.load_ingredients(config['ingredients'])
+        self.load_effects(config['effects'])
+
+# load use_colors
+    def load_common(self, section):
+        self.use_colors = True if section['use_colors']=='True' else False
+
+# load brushes for ingredients
+    def load_ingredients(self, section):
+        self.ingr_brushes={}
+        for brush in section:
+            self.ingr_brushes[brush['name']] = b.Brush(brush)
+
+#load brushes for effects
+    def load_effects(self, section):
+        self.effects_brushes={}
+        for brush in section:
+            self.effects_brushes[brush['name']] = b.Brush(brush)
 
     def print_status(self):
-        print colors_lib
-
-    def try_to_color(self, text, fg_color=None, style_name=None):
-        if colors_lib and self.use_colors:
-            return color(text, fg=fg_color, style=style_name)
-        else:
-            return text
+        print self.use_colors
 
     def bake_ingredient_name(self, ingr, prefix):
-        res=prefix
-        if 'dlc' in ingr:
-            res=res + self.try_to_color(ingr['name'] + ' [' + ingr['dlc'] + ']', style_name='italic')
-        else:
-            res=res + ingr['name']
-        return res
+        name=ingr['name'] + (' [' + ingr['dlc'] + ']' if 'dlc' in ingr else '');
+        for brush in self.ingr_brushes:
+            if self.ingr_brushes[brush].check_object(ingr):
+                name=self.ingr_brushes[brush].color_text(name)
+        return prefix + name
 
     def bake_effect_name(self, effect_name, prefix):
-        res=prefix
-        if effect_name.startswith('Damage ') or effect_name.startswith('Lingering ') or effect_name.startswith('Ravage '):
-            return res + self.try_to_color(effect_name, fg_color='red')
-        elif effect_name.startswith('Weakness '):
-            return res + self.try_to_color(effect_name, fg_color='yellow')
-        elif effect_name.startswith('Fortify ') or effect_name.startswith('Restore '):
-            return res + self.try_to_color(effect_name, fg_color='blue')
-        elif effect_name.startswith('Resist '):
-            return res + self.try_to_color(effect_name, fg_color='cyan')
-        elif effect_name.startswith('Regenerate '):
-            return res + self.try_to_color(effect_name, fg_color='magenta')
-        else:
-            return res + effect_name
+        for brush in self.effects_brushes:
+            if self.effects_brushes[brush].check_marker(effect_name):
+                effect_name=self.effects_brushes[brush].color_text(effect_name)
+        return prefix + effect_name
 
     def print_all_ingredients(self, ingr_list):
         print 'Ingredients:'

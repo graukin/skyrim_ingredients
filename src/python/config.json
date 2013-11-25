@@ -1,0 +1,54 @@
+{
+  "common" : {
+    "use_colors" : "True"
+  },
+  "ingredients" : [
+    {
+      "name" : "dragonborn",
+      "field" : "dlc",
+      "type" : "full",
+      "marker" : "DB",
+      "brush" : {
+        "style" : "italic",
+        "color" : "blue"
+      }
+    },
+    {
+      "name" : "dawnguard",
+      "field" : "dlc",
+      "type" : "full",
+      "marker" : "DG",
+      "brush" : {
+        "style" : "italic",
+        "color" : "yellow"
+      }
+    }
+  ],
+  "effects" : [
+    {
+      "name" : "damage",
+      "type" : "prefix",
+      "marker" : "Damage ",
+      "brush" : {
+        "color" : "red"
+      }
+    },
+    {
+      "name" : "restore",
+      "type" : "prefix",
+      "marker" : "Restore ",
+      "brush" : {
+        "color" : "blue"
+      }
+    },
+    {
+      "name" : "regenerate",
+      "type" : "prefix",
+      "marker" : "Regenerate ",
+      "brush" : {
+        "color" : "blue",
+        "style" : "italic"
+      }
+    }
+  ]
+}
