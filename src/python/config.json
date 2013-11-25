@@ -34,6 +34,24 @@
       }
     },
     {
+      "name" : "lingering",
+      "type" : "prefix",
+      "marker" : "Lingering Damage ",
+      "brush" : {
+        "color" : "red",
+        "style" : "italic"
+      }
+    },
+    {
+      "name" : "ravage",
+      "type" : "prefix",
+      "marker" : "Ravage ",
+      "brush" : {
+        "color" : "red",
+        "style" : "bold"
+      }
+    },
+    {
       "name" : "restore",
       "type" : "prefix",
       "marker" : "Restore ",
@@ -48,6 +66,31 @@
       "brush" : {
         "color" : "blue",
         "style" : "italic"
+      }
+    },
+    {
+      "name" : "weakness",
+      "type" : "prefix",
+      "marker" : "Weakness ",
+      "brush" : {
+        "color" : "yellow"
+      }
+    },
+    {
+      "name" : "resistance",
+      "type" : "prefix",
+      "marker" : "Resist ",
+      "brush" : {
+        "color" : "yellow",
+        "style" : "bold"
+      }
+    },
+    {
+      "name" : "fortify",
+      "type" : "prefix",
+      "marker" : "Fortify ",
+      "brush" : {
+        "color" : "cyan"
       }
     }
   ]
