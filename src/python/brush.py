@@ -7,7 +7,6 @@ else:
 
 class Brush:
     def __init__ (self, terms):
-        print terms
         self.type_ = self.get_from_map(terms, 'type')
         self.field_ = self.get_from_map(terms, 'field')
         self.marker_ = self.get_from_map(terms, 'marker')

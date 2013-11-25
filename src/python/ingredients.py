@@ -22,7 +22,6 @@ def work_out_args(argv):
 def prepare_printer():
     global printer
     printer = pr.ingr_printer("config.json")
-    printer.print_status()
 
 def print_help():
     print '''Commands:

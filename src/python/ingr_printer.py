@@ -30,9 +30,6 @@ class ingr_printer:
         for brush in section:
             self.effects_brushes[brush['name']] = b.Brush(brush)
 
-    def print_status(self):
-        print self.use_colors
-
     def bake_ingredient_name(self, ingr, prefix):
         name=ingr['name'] + (' [' + ingr['dlc'] + ']' if 'dlc' in ingr else '');
         for brush in self.ingr_brushes:
