@@ -31,16 +31,18 @@ class ingr_printer:
             self.effects_brushes[brush['name']] = b.Brush(brush)
 
     def bake_ingredient_name(self, ingr, prefix):
-        name=ingr['name'] + (' [' + ingr['dlc'] + ']' if 'dlc' in ingr else '');
-        for brush in self.ingr_brushes:
-            if self.ingr_brushes[brush].check_object(ingr):
-                name=self.ingr_brushes[brush].color_text(name)
+        name=ingr['name'] + (' [' + ingr['dlc'] + ']' if 'dlc' in ingr else '')
+        if self.use_colors:
+            for brush in self.ingr_brushes:
+                if self.ingr_brushes[brush].check_object(ingr):
+                    name=self.ingr_brushes[brush].color_text(name)
         return prefix + name
 
     def bake_effect_name(self, effect_name, prefix):
-        for brush in self.effects_brushes:
-            if self.effects_brushes[brush].check_marker(effect_name):
-                effect_name=self.effects_brushes[brush].color_text(effect_name)
+        if self.use_colors:
+            for brush in self.effects_brushes:
+                if self.effects_brushes[brush].check_marker(effect_name):
+                    effect_name=self.effects_brushes[brush].color_text(effect_name)
         return prefix + effect_name
 
     def print_all_ingredients(self, ingr_list):
