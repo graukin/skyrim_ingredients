@@ -1,5 +1,6 @@
 import rethinkdb as r
 import os
+import json
 
 from rethinkdb.errors import RqlRuntimeError, RqlDriverError
 
@@ -47,6 +48,9 @@ def check():
 # load data from file into db
 
 def load_data(path2data, force_load):
+    if connection == None:
+        print 'no connection found'
+        exit()
     print 'Try to load data from ', path2data
     l=r.db_list().run(connection)
     if not db_name in l:

@@ -1,6 +1,5 @@
 import sys
 import argparse
-import json
 
 import db_commands as db
 import ingr_printer as pr
@@ -14,10 +13,7 @@ def work_out_args(argv):
     parser.add_argument('-f', '--force', action='store_true', help='use the Force, Luke')
     args = parser.parse_args()
     if args.load_data!=None:
-        if connection==None:
-            exit()
-        else:
-            db.load_data(args.load_data, args.force)
+        db.load_data(args.load_data, args.force)
 
 def prepare_printer():
     global printer
