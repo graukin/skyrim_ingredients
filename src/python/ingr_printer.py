@@ -84,5 +84,8 @@ class ingr_printer:
         print r
 
     def print_combination_stack(self, stack):
+        if stack == None:
+            print "There is no such combination"
+            return
         for el in stack:
             self.print_combination(el[0], el[1])

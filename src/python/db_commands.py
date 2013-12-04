@@ -115,7 +115,7 @@ def get_all_effects():
     return res
 
 def get_ingredient(name):
-    l=r.db(db_name).table(t_name).filter({'name' : name}).limit(1).run(connection)
+    l=r.db(db_name).table(t_name).filter({'name' : name}).pluck('name', 'dlc', 'effects', 'value', 'weight', 'tip').limit(1).run(connection)
     res=None
     for item in l:
         res=item
