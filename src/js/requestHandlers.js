@@ -69,9 +69,9 @@ function info(response, query) {
   }
 }
 
-function mix_smth(mix_method, smth_list, res_map, final_method, response) {
+function mix_smth(get_method, smth_list, res_map, response) {
 	smth_list.forEach(function(value, index, array) {
-		mix_method(value, function(err, result) {
+		get_method(value, function(err, result) {
 			if (err) {
 				res_map[value] = undefined;
 				makeBadResponse(response);
@@ -79,80 +79,12 @@ function mix_smth(mix_method, smth_list, res_map, final_method, response) {
 				res_map[value] = result;
 				console.log("%s %s", value, result);
 			  if(Object.keys(res_map).length == smth_list.length) {
-			    final_method(res_map, response);
+			  	response.writeHead(200, { "Content-Type" : "text/plain" });
+  				response.write("R = " + JSON.stringify(res_map));
+  				response.end();
 			  }
 			}
 		});
-	});
-}
-
-function mix_ingredients(map, response) {
-	var map_keys = Object.keys(map);
-	var effects={};
-	Object.keys(map).forEach(function (value, index, array){
-		map[value]['effects'].forEach(function(value, index, array) {
-			if (value in effects) {
-				effects[value] = effects[value] + 1;
-			} else {
-				effects[value] = 1;
-			}
-		});
-		map_keys.shift();
-		if (map_keys.length === 0) {
-			var res = "";
-			var effects_keys = Object.keys(effects);
-			Object.keys(effects).forEach(function(value, index, array) {
-				if (effects[value] > 1) {
-					res = res + " + " + value;
-				}
-				effects_keys.shift();
-				if (effects_keys.length === 0) {
-					if (res.length === 0) {
-						makeBadResponse(response);
-					} else {
-						response.writeHead(200, { "Content-Type" : "text/plain" });
-						response.write("I have something: " + res.substring(3, res.length));
-						response.end();
-					}
-				}
-			});
-		}
-	});
-}
-
-function list2list(inp) {
-	var outp = [];
-	inp.forEach(function(value, index, array) {
-		console.log(value);
-		var n = value['name'];
-		if ('dlc' in value) {
-			n = n + ' [' + value['dlc'] + ']';
-		}
-		console.log(n);
-		outp.push(n);
-		if (outp.length == inp.length)
-			return outp;
-	});
-}
-
-function mix_effects(map, response) {
-	var map_keys = Object.keys(map);
-	var res = {};
-	var smth_bad = undefined;
-	Object.keys(map).forEach(function(value, index, array) {
-		res[value] = map[value];
-		if (map[value] == undefined)
-			smth_bad = value;
-		map_keys.shift();
-		if (map_keys.length == 0) {
-			if (smth_bad == undefined) {
-				response.writeHead(200, { "Content-Type" : "text/plain" });
-				response.write("I have something: " + JSON.stringify(res));
-				response.end();
-			} else {
-				makeBadResponse(response);
-			}
-		}
 	});
 }
 
@@ -166,9 +98,9 @@ function mix(response, query) {
   }
   
   if (query.type == 'ingredients') {
-  	mix_smth(db.getIngredient, list, {}, mix_ingredients, response);
+  	mix_smth(db.getIngredientShort, list, {}, response);
   } else if (query.type == 'effects') {
-  	mix_smth(db.getEffect, list, {}, mix_effects, response);
+  	mix_smth(db.getEffect, list, {}, response);
   } else {
   	makeBadResponse(response);
   }

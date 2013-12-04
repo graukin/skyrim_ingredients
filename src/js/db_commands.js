@@ -86,6 +86,31 @@ function getIngredient(name, callback) {
   });
 }
 
+function getIngredientShort(name, callback) {
+	var functionName = "getIngredient (" + name + ")";
+  console.info("db.getIngredient(%s)", name);
+  onConnect(function (err, connection) {
+    console.info("[INFO ][%s][%s]", connection['_id'], functionName);
+
+    r.db(dbConfig.db).table(dbConfig.table).filter({'name': name}).pluck('name', 'dlc', 'effects').limit(1).run(connection, function(err, cursor) {
+      if(err) {
+        console.error("[ERROR][%s][%s][collect] %s:%s\n%s", connection['_id'], functionName, err.name, err.msg, err.message);
+        callback(err);
+      } else {
+        cursor.next(function (err, row) {
+          if(err) {
+            console.error("[ERROR][%s][%s][collect] %s:%s\n%s", connection['_id'], functionName, err.name, err.msg, err.message);
+            callback(err);
+          } else {
+            callback(null, row);
+          }
+          connection.close();
+        });
+      }
+    });
+  });
+}
+
 // get effect by name
 function getEffect(name, callback) {
 	var functionName = "getEffect (" + name + ")";
@@ -93,7 +118,7 @@ function getEffect(name, callback) {
   onConnect(function (err, connection) {
     console.info("[INFO ][%s][%s]", connection['_id'], functionName);
 
-    r.db(dbConfig.db).table(dbConfig.table).filter(r.row('effects').contains(name)).pluck('name', 'dlc').orderBy(r.asc('name')).run(connection, function(err, cursor) {
+    r.db(dbConfig.db).table(dbConfig.table).filter(r.row('effects').contains(name)).pluck('name', 'dlc', 'effects').orderBy(r.asc('name')).run(connection, function(err, cursor) {
       if(err) {
         console.error("[ERROR][%s][%s][collect] %s:%s\n%s", connection['_id'], functionName, err.name, err.msg, err.message);
         callback(err);
@@ -123,4 +148,5 @@ function onConnect(callback) {
 exports.getAllIngredients = getAllIngredients;
 exports.getAllEffects = getAllEffects;
 exports.getIngredient = getIngredient;
+exports.getIngredientShort = getIngredientShort;
 exports.getEffect = getEffect;
