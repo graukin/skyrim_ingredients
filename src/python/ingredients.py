@@ -17,7 +17,7 @@ def work_out_args(argv):
 
 def prepare_printer():
     global printer
-    printer = pr.ingr_printer("config.json")
+    printer = pr.ingr_printer("../../data/color_config.json")
 
 def print_help():
     print '''Commands:
