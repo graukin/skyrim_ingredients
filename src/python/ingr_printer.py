@@ -73,6 +73,9 @@ class ingr_printer:
             print self.bake_ingredient_name(ingr, self.offset2)
 
     def print_combination(self, ingr_list, effect_list):
+	if ingr_list is None or effect_list is None:
+            print "There is no such combination"
+	    return
         t_list=[]
         for ingredient in ingr_list:
             t_list.append(self.bake_ingredient_name(ingredient, self.offset0))
@@ -84,7 +87,7 @@ class ingr_printer:
         print r
 
     def print_combination_stack(self, stack):
-        if stack == None:
+        if stack is None:
             print "There is no such combination"
             return
         for el in stack:
