@@ -3,7 +3,7 @@
 
 Big gun for little flyes
 
-Just playing a bit with [RethinkDb](https://github.com/rethinkdb/rethinkdb), Python and [Node.js](http://nodejs.org/) (Warum nicht?! :) )
+Just playing a bit with [RethinkDb](https://github.com/rethinkdb/rethinkdb), Python and [Node.js](http://nodejs.org/) (Why not?! :) But it still doesn't work as I want :( )
 
 ## What is it about?
 
@@ -16,9 +16,9 @@ JSON data compiled from [this source](http://skyrim.melian.cc/?cmd=cmdSkyrimIngr
 
 ### Python
 
-Python script understands -h or --help key. Also you may print 'help' or 'h' while it's running.
+Python script understands -h or --help keys. Also you may print 'help' or 'h' while it's running.
 
-Ingredients' names and effects may be painted in different ways. To use it you need [ansicolors](https://github.com/verigak/colors) library. To change colors or logic change config src/python/config.json
+Ingredients' names and effects may be painted in different ways. To use it you need [ansicolors](https://github.com/verigak/colors) library. To use alternative colors or painting logic change config src/python/config.json
 
 ### Node.js
 
