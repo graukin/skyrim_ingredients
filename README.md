@@ -16,9 +16,9 @@ JSON data compiled from [this source](http://skyrim.melian.cc/?cmd=cmdSkyrimIngr
 
 ### Python
 
-Python script understands -h or --help keys. Also you may print 'help' or 'h' while it's running.
+Python script understands -h or --help keys. Also you may type 'help' or 'h' while it's running.
 
-Ingredients' names and effects may be painted in different ways. To use it you need [ansicolors](https://github.com/verigak/colors) library. To use alternative colors or painting logic change config src/python/config.json
+Ingredients' names and effects may be colored in different ways. To use this feature you need [ansicolors](https://github.com/verigak/colors) library. To use alternative colors or painting logic change config src/python/config.json
 
 ### Node.js
 
